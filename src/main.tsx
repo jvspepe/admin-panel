@@ -3,11 +3,18 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
+import RootLayout from "./layouts/RootLayout.tsx";
+import Home from "./pages/Home.tsx";
 
 const browserRouter = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
+    children: [
+      {
+        element: <RootLayout />,
+        children: [{ path: "/", element: <Home /> }],
+      },
+    ],
   },
 ]);
 
